@@ -5,11 +5,11 @@ import { TextInput } from 'react-native-web';
 
 
 
-
 function CustomDrawerLeft( props ){
     // IF we click in a screen, we add a screen 
     // IF we click in a screen, we remove the screen
     let i = 0;
+    console.log("Props : " + props);
     const [fields, setFields] = useState([]);
 
 const addField = () => {
@@ -18,7 +18,7 @@ const addField = () => {
 
 
 
-const YourFieldComponent = () => (
+const YourFieldComponent = (props) => (
   <View style={{
     flex: 1,
     height: 150,
@@ -33,8 +33,8 @@ const YourFieldComponent = () => (
     borderColor: "black"
   }}>
     <TouchableOpacity style={{ margin : 20 , flex:1  }}>
-    {/* Add your button content or any other components here */}
-    <Image style={{ width: 200, height: 100 }} source={require('../assets/rct_field.png')} />
+    <DrawerItem label="Scénario #1" icon="home" onPress={() => i++}/>
+    <Image style={{ width: 200, height: 100 }} source={require('../assets/field/field1.png')} />
     </TouchableOpacity>
     <TextInput style={{ margin : 5, padding: 5, justifyContent: 'center'}} placeholder="Scénario #1" />
   </View>
@@ -69,5 +69,4 @@ const YourFieldComponent = () => (
       </View>
     )
   }
-
   export default CustomDrawerLeft;
