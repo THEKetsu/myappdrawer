@@ -2,14 +2,12 @@
 import React, { useState } from 'react';
 import {Text, Image, View, TouchableOpacity} from 'react-native';
 import { TextInput } from 'react-native-web';
-
-
+import { DrawerItem } from '@react-navigation/drawer';
 
 function CustomDrawerLeft( props ){
     // IF we click in a screen, we add a screen 
     // IF we click in a screen, we remove the screen
     let i = 0;
-    console.log("Props : " + props);
     const [fields, setFields] = useState([]);
 
 const addField = () => {
@@ -18,7 +16,7 @@ const addField = () => {
 
 
 
-const YourFieldComponent = (props) => (
+const YourFieldComponent = () => (
   <View style={{
     flex: 1,
     height: 150,
@@ -32,11 +30,10 @@ const YourFieldComponent = (props) => (
     borderWidth: 2,
     borderColor: "black"
   }}>
-    <TouchableOpacity style={{ margin : 20 , flex:1  }}>
-    <DrawerItem label="Scénario #1" icon="home" onPress={() => i++}/>
+    <TouchableOpacity style={{ margin : 20 , flex:1  }} >
     <Image style={{ width: 200, height: 100 }} source={require('../assets/field/field1.png')} />
+    <DrawerItem label="Field 1" onPress={() => props.navigation.navigate('DisplayField', { name: 'Field 1', icon: require('../assets/field/field1.png') })} />
     </TouchableOpacity>
-    <TextInput style={{ margin : 5, padding: 5, justifyContent: 'center'}} placeholder="Scénario #1" />
   </View>
 
 );
